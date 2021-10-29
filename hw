@@ -1,0 +1,47 @@
+package hw4;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeWork4 {
+    static final String FILE_NAME1 = "C://JAVA/Java2Lesson3Homework4.txt";
+    static final String FILE_NAME2 = "Java2Lesson3Homework4.txt";
+
+
+    public static void main(String[] args) {
+
+        List<String> wordArray = new ArrayList<>();
+        wordArray = ArrayOperation.fillTheArray(wordArray);
+        System.out.println(wordArray + "\n");
+        ArrayOperation.printUniqueWords(wordArray);
+        wordArray.clear();
+        try {
+            wordArray = ArrayOperation.fillTheArrayFromFile(wordArray, FILE_NAME2);
+        } catch (IOException e) {
+            System.out.println("Failed to fill array from file!\n");
+        }
+        try {
+            wordArray = ArrayOperation.fillTheArrayFromFile(wordArray, FILE_NAME1);
+        } catch (IOException e) {
+            System.out.println("Failed to fill array from file!\n");
+        }
+        System.out.println(wordArray + "\n");
+        ArrayOperation.printUniqueWords(wordArray);
+
+        Phonebook phonebook = new Phonebook();
+
+        phonebook.add(4563421, "Ivanov");
+        phonebook.add(3309876, "Ivanov");
+        phonebook.add(2306543, "Petrov");
+        phonebook.add(3345438, "Semenov");
+        phonebook.add(3354565, "Semenov");
+        phonebook.add(3456543, "Vasyliev");
+
+        phonebook.get("Ivanov");
+        phonebook.get("Petrov");
+        phonebook.get("Semenov");
+        phonebook.get("Vasyliev");
+        phonebook.get("Petrova");
+    }
+}
